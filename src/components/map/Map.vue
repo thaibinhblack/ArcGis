@@ -4,7 +4,7 @@
         <div id="viewDiv">
             <load v-bind:loadding="loadding" />
             <widget v-if="action != null && action != 'Search'" v-bind:action="action" @updateaction="updateaction" />
-            <UpdateFeature v-bind:showUpdate="showUpdate" @updateshowUpdate="updateshowUpdate" />
+            <UpdateFeature v-bind:showUpdate="showUpdate" @updateshowUpdate="updateshowUpdate" @goto="goto" />
             <Search v-bind:show="show" @updateshow="updateshow" @goto="goto" @resetFeature="resetFeature"/>
         </div>
        
@@ -72,7 +72,6 @@ export default {
         },
         goto(val){
             console.log('goto', val)
-            // this.$store.state.map.highlight([val.attributes.objectId]);     
             this.$store.state.view.goTo({
                 target: val.geometry,
                
@@ -91,22 +90,22 @@ export default {
                 outFields: ["*"],
                 title: "Cây "+val.attributes.SoHieu+" - "+val.attributes.MaTenCX+"",
                 content:"<table class='esri-widget__table'> " +
-          "<tr><th>Số Hiệu </th><td>" + val.attributes.SoHieu + "</td></tr> " +
-          "<tr><th>Tên Cây Xanh</th><td>" + val.attributes.MaTenCX + "</td></tr> " +
-          "<tr><th>Kinh độ </th><td>" + (val.attributes.KinhDo != null ? parseFloat(val.attributes.KinhDo) : '(Rỗng)') + "</td></tr> " +
-          "<tr><th>Vĩ độ </th><td>" + (val.attributes.ViDo != null ? parseFloat(val.attributes.ViDo) : '(Rỗng)') + "</td></tr> " +
-          "<tr><th>Đường Kính </th><td>" + parseFloat(val.attributes.DuongKinh) + "</td></tr> " +
-          "<tr><th>Chiều Cao </th><td>" + parseFloat(val.attributes.ChieuCao) + "</td></tr> " +
-          "<tr><th>Độ Rộng Tán </th><td>" + parseFloat(val.attributes.DoRongTan != null ? val.attributes.DoRongTan : '(Rỗng)') + "</td></tr> " +
-          "<tr><th>Ngày Trồng </th><td>" + (val.attributes.NgayTrong != null ? val.attributes.NgayTrong : '(rỗng)') + "</td></tr> " +
-          "<tr><th>Ngày Cập Nhật </th><td>" + val.attributes.NgayCapNhat + "</td></tr> " +
-          "<tr><th>Thuộc Tính </th><td>" + (val.attributes.ThuocTinh != null ? val.attributes.ThuocTinh : '(rỗng)') + "</td></tr> " +
-          "<tr><th>Ghi Chú </th><td>" + val.attributes.GhiChu + "</td></tr> " +
-          "<tr><th>Tuyến Đường </th><td>" + val.attributes.TuyenDuong + "</td></tr> " +
-          "<tr><th>NVKS_X </th><td>" + (val.attributes.NVKS_X != null ? val.attributes.NVKS_X : '(rỗng)') + "</td></tr> " +
-          "<tr><th>NVKS_Y </th><td>" + (val.attributes.NVKS_Y != null ? val.attributes.NVKS_Y : '(rỗng)') + "</td></tr> " +
-          "<tr><th>Người Cập Nhật </th><td>" + (val.attributes.NguoiCapNhat != null ? val.attributes.NguoiCapNhat : '(rỗng)') + "</td></tr> " +
-          "</table> ",
+                    "<tr><th>Số Hiệu </th><td>" + val.attributes.SoHieu + "</td></tr> " +
+                    "<tr><th>Tên Cây Xanh</th><td>" + val.attributes.MaTenCX + "</td></tr> " +
+                    "<tr><th>Kinh độ </th><td>" + (val.attributes.KinhDo != null ? parseFloat(val.attributes.KinhDo) : '(Rỗng)') + "</td></tr> " +
+                    "<tr><th>Vĩ độ </th><td>" + (val.attributes.ViDo != null ? parseFloat(val.attributes.ViDo) : '(Rỗng)') + "</td></tr> " +
+                    "<tr><th>Đường Kính </th><td>" + parseFloat(val.attributes.DuongKinh) + "</td></tr> " +
+                    "<tr><th>Chiều Cao </th><td>" + parseFloat(val.attributes.ChieuCao) + "</td></tr> " +
+                    "<tr><th>Độ Rộng Tán </th><td>" + parseFloat(val.attributes.DoRongTan != null ? val.attributes.DoRongTan : '(Rỗng)') + "</td></tr> " +
+                    "<tr><th>Ngày Trồng </th><td>" + (val.attributes.NgayTrong != null ? val.attributes.NgayTrong : '(rỗng)') + "</td></tr> " +
+                    "<tr><th>Ngày Cập Nhật </th><td>" + val.attributes.NgayCapNhat + "</td></tr> " +
+                    "<tr><th>Thuộc Tính </th><td>" + (val.attributes.ThuocTinh != null ? val.attributes.ThuocTinh : '(rỗng)') + "</td></tr> " +
+                    "<tr><th>Ghi Chú </th><td>" + val.attributes.GhiChu + "</td></tr> " +
+                    "<tr><th>Tuyến Đường </th><td>" + val.attributes.TuyenDuong + "</td></tr> " +
+                    "<tr><th>NVKS_X </th><td>" + (val.attributes.NVKS_X != null ? val.attributes.NVKS_X : '(rỗng)') + "</td></tr> " +
+                    "<tr><th>NVKS_Y </th><td>" + (val.attributes.NVKS_Y != null ? val.attributes.NVKS_Y : '(rỗng)') + "</td></tr> " +
+                    "<tr><th>Người Cập Nhật </th><td>" + (val.attributes.NguoiCapNhat != null ? val.attributes.NguoiCapNhat : '(rỗng)') + "</td></tr> " +
+                    "</table> ",
                 actions: [{
                     id: "showImg",
                     title: "Xem hình ảnh",
@@ -142,11 +141,12 @@ export default {
                 "esri/Map",
                 "esri/views/MapView",
                 "esri/layers/FeatureLayer",
-                "esri/Graphic"
+                "esri/Graphic",
+                "esri/core/urlUtils"
             ],{
              url: "https://js.arcgis.com/4.11/",
            
-            }).then(([Map,MapView,FeatureLayer, Graphic]) => {
+            }).then(([Map,MapView,FeatureLayer, Graphic, urlUtils]) => {
                 if(!this.$store.state.map)
                 {
                     const map = new Map({
@@ -171,7 +171,6 @@ export default {
         
                 const featureLayer = new FeatureLayer({
                     url: "https://tilis.vbgis.vn/arcgis/rest/services/DoThi/CayXanh/FeatureServer/0",
-                    
                     title: "Cây Xanh",
                     outFields: ["*"],
                     popupTemplate: {

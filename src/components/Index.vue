@@ -9,7 +9,6 @@
 
 <script>
 import Map from './map/Map.vue'
-
 export default {
     name: 'Index',
     data(){
@@ -19,6 +18,10 @@ export default {
                     href: '/',
                     title: 'Trang Chủ',
                     icon: 'fa fa-home'
+                },
+                {
+                    title: 'Đăng ký thông báo',
+                    icon: 'fa fa-bell'
                 },
                 {
                     title: 'Quản Lý Cây Xanh',

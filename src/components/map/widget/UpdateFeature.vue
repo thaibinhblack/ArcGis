@@ -2,7 +2,7 @@
   <div>
     <!-- Side Modal Top Right -->
   
-    <mdb-modal fullHeight  position="right" direction="right" :show="show" @close="closemodal">
+    <mdb-modal fullHeight  position="right" direction="right" :show="show" @close="closemodal"  v-if="feature != null">
         <mdb-modal-header>
             <mdb-modal-title>{{feature.attributes.MaTenCX}}</mdb-modal-title>
         </mdb-modal-header>
@@ -15,14 +15,14 @@
             <mdb-input v-model="feature.attributes.DoRongTan" label="Độ Rộng Tán" size="sm" />
             <mdb-input v-model="feature.attributes.DuongKinh" label="Đường Kính" size="sm" />
             <mdb-input v-model="feature.attributes.MaTinhTrang" label="Mã Tình Trạng" size="sm" />
-            <mdb-input type="date" v-model="feature.attributes.NgayTrong" label="Ngày Trồng" size="sm" />
-            <mdb-input type="date" v-model="feature.attributes.NgayCapNhat" label="Ngày Cập Nhật" size="sm" />
+            <mdb-input type="datetime" v-model="feature.attributes.NgayTrong" label="Ngày Trồng" size="sm" />
+            <!-- <mdb-input type="datetime" v-model="feature.attributes.NgayCapNhat" label="Ngày Cập Nhật" size="sm" /> -->
             <mdb-input v-model="feature.attributes.NguoiCapNhat" label="Người Cập Nhật" size="sm" />
         </mdb-modal-body>
         <mdb-modal-footer>
            
            
-            <mdb-btn color="primary">Save</mdb-btn>
+            <mdb-btn color="primary" @click="updateFeature">Save</mdb-btn>
             <mdb-btn color="primary" @click="deleteFeature">Delete </mdb-btn>
 
         </mdb-modal-footer>
@@ -31,7 +31,8 @@
 </template>
 <script>
   import { mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbBtn , mdbInput} from 'mdbvue'
-  import { deleteFeatures } from '@esri/arcgis-rest-feature-layer'
+  import { deleteFeatures, updateFeatures } from '@esri/arcgis-rest-feature-layer'
+  import moment from 'moment'
   export default {
     name: "UpdateFeature",
     props: ["showUpdate"],
@@ -40,12 +41,15 @@
           this.show = newVal
           console.log('showUpdate',newVal)
           this.feature = this.$store.state.feature
+          this.feature.attributes.NgayTrong = moment(this.feature.attributes.NgayTrong).format('YYYY/MM/DD')
+          console.log('NgayTrong',this.feature.attributes.NgayTrong)
         }
     },
     data(){
         return{
           show: false,  
-          feature: null
+          feature: null,
+          NgayCapNhat: moment().format('YYYY-MM-DD')
         }
     },
     components: {
@@ -62,6 +66,9 @@
           this.$emit('updateshowUpdate',false)
           this.show = false
         },
+        getSome(dateValue){
+          return moment(dateValue,'YYYY-MM-DD').unix()
+        },
         deleteFeature(){
             deleteFeatures({
                 url: this.$store.state.url,
@@ -69,6 +76,21 @@
             });
             alert('Bạn vừa xóa một cây xanh');
         },
+        updateFeature(){
+          this.feature.attributes.NgayCapNhat = this.NgayCapNhat
+          updateFeatures({
+            url: this.$store.state.url,
+            features:[
+              this.feature
+            ]
+          }).then((response) => {
+            alert("cập nhật thành công")
+            this.closemodal()
+            this.$emit("goto",this.feature)
+          }).catch((erorr) => {
+            alert("cập nhật thất bại")
+          })
+        }
         
     },
     created(){

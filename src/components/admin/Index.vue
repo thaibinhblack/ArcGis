@@ -1,12 +1,14 @@
 <template>
     <div id="app">
         <sidebar-menu :menu="menu"  @itemClick="onItemClick" />
-        <Dashboard  style="padding-left:50px;"/>
+        <Dashboard v-if="actionName =='NULL'"  style="padding-left:50px;"/>
+        <Users />
     </div>
 </template>
 
 <script>
 import Dashboard from './Dashboard.vue'
+import Users from './Users.vue'
 export default {
     name: 'Admin',
     data(){
@@ -45,7 +47,8 @@ export default {
         }
     },
     components:{
-      Dashboard
+      Dashboard,
+      Users
         
     },
     methods:{

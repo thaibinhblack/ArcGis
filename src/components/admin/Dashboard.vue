@@ -1,6 +1,6 @@
 <template>
   <section id="dashboard">
-    <mdb-card class="mb-4">
+    <!-- <mdb-card class="mb-4">
       <mdb-card-body class="d-sm-flex justify-content-between">
         <h4 class="mb-sm-0 pt-2">
           <a href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">Home Page</a><span>/</span><span>Dashboard</span>
@@ -10,10 +10,10 @@
           <mdb-btn color="primary" size="sm" class="my-0" type="submit"><i class="fa fa-search"></i></mdb-btn>
         </form>
       </mdb-card-body>
-    </mdb-card>
+    </mdb-card> -->
     <section class="mt-lg-5">
       <mdb-row>
-        <mdb-col xl="3" md="6" class="mb-r">
+        <mdb-col xl="4" md="4" class="mb-r">
           <mdb-card cascade class="cascading-admin-card">
             <div class="admin-up">
                 <mdb-icon icon="tree" class="primary-color" />
@@ -35,7 +35,7 @@
             
           </mdb-card>
         </mdb-col>
-        <mdb-col xl="3" md="6" class="mb-r">
+        <mdb-col xl="4" md="4" class="mb-r">
           <mdb-card cascade class="cascading-admin-card">
             <div class="admin-up">
               <mdb-icon icon="chart-line" class="warning-color"/>
@@ -55,7 +55,7 @@
             </mdb-card-body>
           </mdb-card>
         </mdb-col>
-        <mdb-col xl="3" md="6" class="mb-r">
+        <mdb-col xl="4" md="4" class="mb-r">
           <mdb-card cascade class="cascading-admin-card">
             <div class="admin-up">
               <mdb-icon icon="chart-pie" class="light-blue lighten-1"/>
@@ -75,26 +75,7 @@
             </mdb-card-body>
           </mdb-card>
         </mdb-col>
-        <mdb-col xl="3" md="6" class="mb-r">
-          <mdb-card cascade class="cascading-admin-card">
-            <div class="admin-up">
-              <mdb-icon icon="chart-bar" class="red accent-2"/>
-              <div class="data">
-                <p>SỐ LƯỢNG TUYẾN ĐƯỜNG</p>
-                <h4>
-                  <strong>10</strong>
-                </h4>
-              </div>
-            </div>
-            <mdb-card-body>
-              <div class="progress">
-                <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-primary" role="progressbar"
-                  style="width: 95%"></div>
-              </div>
-              <mdb-card-text>Số lượng tuyến đường dược trồng (95%)</mdb-card-text>
-            </mdb-card-body>
-          </mdb-card>
-        </mdb-col>
+      
       </mdb-row>
     </section>
     <section>
