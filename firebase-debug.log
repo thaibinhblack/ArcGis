@@ -1,0 +1,29 @@
+[debug] [2019-06-04T01:04:48.888Z] ----------------------------------------------------------------------
+[debug] [2019-06-04T01:04:48.892Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ACER\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
+[debug] [2019-06-04T01:04:48.893Z] CLI Version:   6.10.0
+[debug] [2019-06-04T01:04:48.893Z] Platform:      win32
+[debug] [2019-06-04T01:04:48.893Z] Node Version:  v8.11.4
+[debug] [2019-06-04T01:04:48.894Z] Time:          Tue Jun 04 2019 08:04:48 GMT+0700 (SE Asia Standard Time)
+[debug] [2019-06-04T01:04:48.894Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-06-04T01:04:48.914Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-06-04T01:04:48.916Z] > authorizing via signed-in user
+[debug] [2019-06-04T01:04:48.916Z] [iam] checking project vnpttg-7c1fc for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2019-06-04T01:04:48.919Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/vnpttg-7c1fc:testIamPermissions  
+
+[debug] [2019-06-04T01:04:50.086Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'vnpttg-7c1fc'...
+[info] 
+[info] i  deploying functions
+[debug] [2019-06-04T01:04:50.367Z] TypeError: Path must be a string. Received undefined
+    at assertPath (path.js:28:11)
+    at Object.join (path.js:489:7)
+    at Config.path (C:\Users\ACER\AppData\Roaming\npm\node_modules\firebase-tools\lib\config.js:149:39)
+    at module.exports (C:\Users\ACER\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\prepare.js:12:36)
+    at _chain (C:\Users\ACER\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:22:40)
+    at C:\Users\ACER\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:63:16
+    at <anonymous>
+    at process._tickDomainCallback (internal/process/next_tick.js:228:7)
+[error] 
+[error] Error: An unexpected error has occurred.
