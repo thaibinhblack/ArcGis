@@ -8,7 +8,7 @@
             </div>
             <mdb-input label="Your email" type ="email" v-model="username"/>
             <mdb-input label="Your password" type="password" v-model="password" containerClass="mb-0"/>
-            
+
             <div class="text-center mb-3">
                 <mdb-btn type="button" gradient="blue" rounded class="btn-block z-depth-1a" @click="login">Sign up</mdb-btn>
             </div>
@@ -25,79 +25,76 @@
     </mdb-card>
 </template>
 <script>
-    import {mdbInput, mdbBtn, mdbCard, mdbCardBody, mdbModalFooter, mdbIcon } from 'mdbvue';
-    import axios from 'axios'
-    axios.defaults.xsrfCookieName = 'csrftoken'
-    axios.defaults.xsrfHeaderName = 'X-CSRFToken'
-    // import bcrypt from 'bcrypt'
-    export default {
-        name: 'Login',
-        components: {
-            mdbInput,
-            mdbBtn,
-            mdbCard,
-            mdbCardBody,
-            mdbModalFooter,
-            mdbIcon,
-        },
-        data() {
-            return {
-                username: null,
-                password: null
-            };
-        },
-        methods: {
-            login(){
-             
-                // const saltRounds = 10;
-                // const myPlaintextPassword = 's0/\/\P4$$w0rD';
-                // const someOtherPlaintextPassword = 'not_bacon';
-                // this.password = bcrypt.genSalt(10, function(err, salt) {
-                //             bcrypt.hash(this.password, salt, function(err, hash) {
-                //                 return hash
-                //             });
-                //         })
-                // const FormData = new FormData()
-                // FormData.append(this.username,this.password)
-                // console.log(this.password)
-                // axios({
-                //     url:"http://127.0.0.1:8000/api/user-token/",
-                //     method: 'POST',
-                //     data: {
-                //         username: this.username,
-                //         password: this.password
-                //     },
-                //     headers:{
-                //         'Content-Type': 'application/x-www-form-urlencoded'
-                //     }
-                // }).then((response) => {
-                //     console.log(response)
-                // }).catch((error) => {
-                //     console.log(error)
-                // })
-                console.log('user',this.username,'password',this.password)
-                axios.post("https://dtvithanh.vbgis.vn/api/login",
-                {
-                    username:  this.username,
-                    password: this.password
-                },
-                {
-                    headers:{
-                        'Content-Type': 'multipart/form-data',
-                        'Access-Control-Allow-Origin': '*'
-                    }
-                }
-                
-                ).then((response) => {
-                       console.log(response) 
-                }).catch((error) => {
-                    console.log(error)
-                })
-               
-                
-            }
-        }
+import {mdbInput, mdbBtn, mdbCard, mdbCardBody, mdbModalFooter, mdbIcon } from 'mdbvue'
+import axios from 'axios'
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+// import bcrypt from 'bcrypt'
+export default {
+  name: 'Login',
+  components: {
+    mdbInput,
+    mdbBtn,
+    mdbCard,
+    mdbCardBody,
+    mdbModalFooter,
+    mdbIcon
+  },
+  data () {
+    return {
+      username: null,
+      password: null
     }
+  },
+  methods: {
+    login () {
+      // const saltRounds = 10;
+      // const myPlaintextPassword = 's0/\/\P4$$w0rD';
+      // const someOtherPlaintextPassword = 'not_bacon';
+      // this.password = bcrypt.genSalt(10, function(err, salt) {
+      //             bcrypt.hash(this.password, salt, function(err, hash) {
+      //                 return hash
+      //             });
+      //         })
+      // const FormData = new FormData()
+      // FormData.append(this.username,this.password)
+      // console.log(this.password)
+      // axios({
+      //     url:"http://127.0.0.1:8000/api/user-token/",
+      //     method: 'POST',
+      //     data: {
+      //         username: this.username,
+      //         password: this.password
+      //     },
+      //     headers:{
+      //         'Content-Type': 'application/x-www-form-urlencoded'
+      //     }
+      // }).then((response) => {
+      //     console.log(response)
+      // }).catch((error) => {
+      //     console.log(error)
+      // })
+      console.log('user', this.username, 'password', this.password)
+      axios.post('https://dtvithanh.vbgis.vn/api/login',
+        {
+          username: this.username,
+          password: this.password
+        },
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'Access-Control-Allow-Origin': '*'
+          }
+        }
+
+      ).then((response) => {
+        console.log(response)
+      }).catch((error) => {
+        console.log(error)
+      })
+    }
+  }
+}
 </script>
 <style scoped>
     .font-small {

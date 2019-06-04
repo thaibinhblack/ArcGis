@@ -1,20 +1,8 @@
 {
- 
   "name": "appurbangreenery",
-  "description": "a really cool app",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "8.11.4",
-    "npm": "5.6.0"
-  },
   "scripts": {
-    "deploy": "firebase deploy",
-    "deploy:hosting": "firebase deploy --only hosting",
-    "deploy:database": "firebase deploy --only database",
-    "deploy:firestore": "firebase deploy --only firestore",
-    "deploy:storage": "firebase deploy --only storage",
-    "deploy:functions": "firebase deploy --only functions",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"

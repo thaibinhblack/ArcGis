@@ -32,7 +32,7 @@
               </div>
               <mdb-card-text>Số lượng tuyến đường dược trồng (95%)</mdb-card-text>
             </mdb-card-body>
-            
+
           </mdb-card>
         </mdb-col>
         <mdb-col xl="4" md="4" class="mb-r">
@@ -75,7 +75,7 @@
             </mdb-card-body>
           </mdb-card>
         </mdb-col>
-      
+
       </mdb-row>
     </section>
     <section>
@@ -238,7 +238,7 @@
     </section>
     <section>
       <mdb-row>
-        
+
         <mdb-col lg="6" class="mb-4">
           <mdb-card>
             <mdb-card-header>Modals</mdb-card-header>

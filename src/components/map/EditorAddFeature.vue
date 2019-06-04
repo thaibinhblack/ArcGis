@@ -4,14 +4,14 @@
     </div>
 </template>
 <script>
-  import { mdbInput } from 'mdbvue'
-  
-  export default {
-    name: "Input",
-    components: {
-      mdbInput
-    },
+import { mdbInput } from 'mdbvue'
+
+export default {
+  name: 'Input',
+  components: {
+    mdbInput
   }
+}
 </script>
 <style>
 

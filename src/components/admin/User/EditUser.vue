@@ -1,7 +1,7 @@
 <template>
   <form v-if="userLocal != null" v-on:submit.prevent="updateuserLocal">
     <!-- Side Modal Top Right -->
-  
+
     <mdb-modal fullHeight  position="right" direction="right" :show="showLocal" @close="closemodal">
         <mdb-modal-header>
             <mdb-modal-title>Chỉnh sửa thông tin userLocal: {{userLocal.name}}</mdb-modal-title>
@@ -23,85 +23,77 @@
             <mdb-input v-model="userLocal.password" label="Password" size="sm" required />    -->
         </mdb-modal-body>
         <mdb-modal-footer>
-           
+
             <mdb-btn type="submit" color="secondary">Cập nhật</mdb-btn>
-          
 
         </mdb-modal-footer>
     </mdb-modal>
   </form>
 </template>
 <script>
-  import { mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbBtn , mdbInput, mdbIcon,
-    mdbListGroup, mdbListGroupItem, mdbBadge} from 'mdbvue'
- 
-  import { queryFeatures, queryRelated } from '@esri/arcgis-rest-feature-layer'
-  import { loadModules } from 'esri-loader'
-  import axios from 'axios'
-  import Vue from 'vue'
-  import Vuex, { mapState } from 'vuex'
-  Vue.use(Vuex)
-import { async } from 'q';
-  export default {
-    name: "EdituserLocal",
-    props: {
-      user: {
-          type: Object,
-          required: true
-      }
-    },
-    
-    watch:{
-      
-        async user(newVal,oldVal)
-        {
-            if(newVal != '')
-            {
-                this.userLocal = newVal
-                this.showLocal = true
-                console.log(newVal)
-            }
-            
-        }
-    },
-    
-    data(){
-        return{
-           
-            showLocal: false,
-            userLocal: null
-        }
-    },
-    components: {
-      mdbModal,
-      mdbModalHeader,
-      mdbModalTitle,
-      mdbModalBody,
-      mdbModalFooter,
-      mdbBtn,
-      mdbInput,
-      mdbIcon,
-      mdbListGroup, 
-      mdbListGroupItem,
-      mdbBadge
-    },
-    methods:{
-       
-        closemodal(){
-             this.$emit("edited",null);
-             this.showLocal = false
-        },
-        updateuserLocal()
-        {
+import { mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbBtn, mdbInput, mdbIcon,
+  mdbListGroup, mdbListGroupItem, mdbBadge} from 'mdbvue'
 
-        }
-        
+import Vue from 'vue'
+
+import { async } from 'q'
+Vue.use(Vuex)
+export default {
+  name: 'EdituserLocal',
+  props: {
+    user: {
+      type: Object,
+      required: true
+    }
+  },
+
+  watch: {
+
+    async user (newVal, oldVal) {
+      if (newVal !== '') {
+        this.userLocal = newVal
+        this.showLocal = true
+        console.log(newVal)
+      }
+    }
+  },
+
+  data () {
+    return {
+
+      showLocal: false,
+      userLocal: null
+    }
+  },
+  components: {
+    mdbModal,
+    mdbModalHeader,
+    mdbModalTitle,
+    mdbModalBody,
+    mdbModalFooter,
+    mdbBtn,
+    mdbInput,
+    mdbIcon,
+    mdbListGroup,
+    mdbListGroupItem,
+    mdbBadge
+  },
+  methods: {
+
+    closemodal () {
+      this.$emit('edited', null)
+      this.showLocal = false
     },
-    created(){
-      
-    },
-   
-  };
+    updateuserLocal () {
+
+    }
+
+  },
+  created () {
+
+  }
+
+}
 </script>
 <style>
 p{margin-bottom: 0 !important;font-size: 15px;}

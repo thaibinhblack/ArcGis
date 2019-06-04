@@ -2,7 +2,7 @@
     <div>
         <form v-on:submit.prevent="addUser">
             <!-- Side Modal Top Right -->
-        
+
             <mdb-modal fullHeight  position="right" direction="right" :show="showLocal" @close="closemodal">
                 <mdb-modal-header>
                     <mdb-modal-title>Thêm mới user</mdb-modal-title>
@@ -19,12 +19,11 @@
                     <mdb-input v-model="user.mobile" label="Mobile" size="sm" required />
                     <mdb-input v-model="user.address" type="textarea" label="Address" size="sm" required />
                     <mdb-input v-model="user.username" label="Username" size="sm" required />
-                    <mdb-input v-model="user.password" label="Password" size="sm" required />   
+                    <mdb-input v-model="user.password" label="Password" size="sm" required />
                 </mdb-modal-body>
                 <mdb-modal-footer>
-                
+
                     <mdb-btn type="submit" color="secondary">Thêm mới</mdb-btn>
-                
 
                 </mdb-modal-footer>
             </mdb-modal>
@@ -33,72 +32,67 @@
     </div>
 </template>
 <script>
-  import { mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbBtn , mdbInput, mdbIcon,
-    mdbListGroup, mdbListGroupItem, mdbBadge} from 'mdbvue'
-  import axios from 'axios'
-  import Vue from 'vue'
-  import Vuex, { mapState } from 'vuex'
- 
+import { mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbBtn, mdbInput, mdbIcon,
+  mdbListGroup, mdbListGroupItem, mdbBadge} from 'mdbvue'
 
-  Vue.use(Vuex)
-import { async } from 'q';
-  export default {
-    name: "AddUser",
-    components:{
-        
-    },
-    props: {
-      show: {
-        type: Boolean,
-        required: true
-      }
-    },
-    
-    watch:{
-        async show(newVal,oldVal){
-            this.showLocal = newVal
-        }
-    },
-    
-    data(){
-        return{
-           user: {
-               gender: -1
-           },
-           showLocal: false
-            
-        }
-    },
-    components: {
-      mdbModal,
-      mdbModalHeader,
-      mdbModalTitle,
-      mdbModalBody,
-      mdbModalFooter,
-      mdbBtn,
-      mdbInput,
-      mdbIcon,
-      mdbListGroup, 
-      mdbListGroupItem,
-      mdbBadge
-    },
-    methods:{
-       
-        closemodal(){
-             this.$emit("updateshow",false);
-             this.showLocal = false
-        },
-        addUser()
-        {
+import Vue from 'vue'
+import Vuex, { mapState } from 'vuex'
 
-        }
-        
+
+Vue.use(Vuex)
+export default {
+  name: 'AddUser',
+  props: {
+    show: {
+      type: Boolean,
+      required: true
+    }
+  },
+
+  watch: {
+    async show (newVal, oldVal) {
+      this.showLocal = newVal
+    }
+  },
+
+  data () {
+    return {
+      user: {
+        gender: -1
+      },
+      showLocal: false
+
+    }
+  },
+  components: {
+    mdbModal,
+    mdbModalHeader,
+    mdbModalTitle,
+    mdbModalBody,
+    mdbModalFooter,
+    mdbBtn,
+    mdbInput,
+    mdbIcon,
+    mdbListGroup,
+    mdbListGroupItem,
+    mdbBadge
+  },
+  methods: {
+
+    closemodal () {
+      this.$emit('updateshow', false)
+      this.showLocal = false
     },
-    created(){
-      
-    },
-   
-  };
+    addUser () {
+
+    }
+
+  },
+  created () {
+
+  }
+
+}
 </script>
 <style>
 p{margin-bottom: 0 !important;font-size: 15px;}

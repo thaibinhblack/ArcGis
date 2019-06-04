@@ -7,13 +7,13 @@
 </template>
 <script>
 export default {
-    name: "load",
-    prop:["loadding"],
-    data(){
-        return{
-            loadding: this.loadding
-        }
+  name: 'load',
+  prop: ['loadding'],
+  data () {
+    return {
+      loadding: this.loadding
     }
+  }
 }
 </script>
 <style>

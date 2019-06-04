@@ -1,7 +1,7 @@
 <template>
   <mdb-container>
     <!-- modal trigger button -->
-   
+
     <!-- simple login modal -->
     <mdb-modal >
       <mdb-modal-header class="text-center">
@@ -18,23 +18,23 @@
   </mdb-container>
 </template>
 <script>
-  import { mdbContainer, mdbBtn, mdbModal, mdbModalHeader, mdbModalBody, mdbModalFooter, mdbInput, mdbModalTitle } from 'mdbvue';
-  export default {
-    name: 'ModalExamplesPage',
-    components: {
-      mdbContainer,
-      mdbBtn,
-      mdbModal,
-      mdbModalHeader,
-      mdbModalBody,
-      mdbModalFooter,
-      mdbInput,
-      mdbModalTitle
-    },
-    data() {
-      return {
-        login: false
-      }
+import { mdbContainer, mdbBtn, mdbModal, mdbModalHeader, mdbModalBody, mdbModalFooter, mdbInput, mdbModalTitle } from 'mdbvue'
+export default {
+  name: 'ModalExamplesPage',
+  components: {
+    mdbContainer,
+    mdbBtn,
+    mdbModal,
+    mdbModalHeader,
+    mdbModalBody,
+    mdbModalFooter,
+    mdbInput,
+    mdbModalTitle
+  },
+  data () {
+    return {
+      login: false
     }
   }
+}
 </script>
