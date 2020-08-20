@@ -16,7 +16,7 @@
     "@esri/arcgis-rest-feature-layer": "^2.0.2",
     "@esri/arcgis-rest-request": "^2.0.0",
     "axios": "^0.18.0",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.20",
     "core-js": "^2.6.5",
